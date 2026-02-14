@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For My Love ❤️</title>
+  <style>
+    body {
+      background-color: #ffd6e7;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-top: 100px;
+    }
+
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      display: inline-block;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #yes {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background-color: grey;
+      color: white;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Will you be my Valentine? 💖</h2>
+  <button id="yes" onclick="yesClicked()">Yes</button>
+  <button id="no" onmouseover="moveButton()">No</button>
+</div>
+
+<script>
+  const noBtn = document.getElementById("no");
+  const yesBtn = document.getElementById("yes");
+
+  yesBtn.addEventListener("click", function() {
+    alert("Yayyyy! I love you so much ❤️🥰");
+  });
+
+  function moveButton() {
+    const box = document.querySelector(".box");
+
+    const maxX = box.offsetWidth - noBtn.offsetWidth;
+    const maxY = box.offsetHeight - noBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+  }
+
+  // Works for laptop
+  noBtn.addEventListener("mouseover", moveButton);
+
+  // Works for phone (touch screen)
+  noBtn.addEventListener("touchstart", function(e) {
+    e.preventDefault();   // prevents accidental click
+    moveButton();
+  });
+</script>
+
+</body>
+</html>
